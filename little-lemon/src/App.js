@@ -1,21 +1,20 @@
 import './App.css';
-import Header from './Header';
-import Nav from './Nav';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './Main';
-import Footer from './Footer';
+import ConfirmedBooking from './ConfirmedBooking';
 
 function App() {
   return (
-    <>
-      <Header />
-      <Nav />
-      <Main />
-      <Footer />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/confirmation" element={<ConfirmedBooking />} />
+      </Routes>
+    </Router>
   );
 }
-export default App;
 
+export default App;
 
 
 

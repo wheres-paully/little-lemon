@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -9,13 +9,13 @@ function BookingForm({ availableTimes, dispatch }) {
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
-    dispatch(selectedDate); // update availableTimes based on date
+    dispatch(selectedDate);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = { date, time, guests, occasion };
-    console.log('Form submitted:', formData);
+    submitForm(formData); // 🔗 Call the function passed in via props
   };
 
   return (
@@ -36,9 +36,7 @@ function BookingForm({ availableTimes, dispatch }) {
       >
         <option value="">Select a time</option>
         {availableTimes.map((t) => (
-          <option key={t} value={t}>
-            {t}
-          </option>
+          <option key={t} value={t}>{t}</option>
         ))}
       </select>
 

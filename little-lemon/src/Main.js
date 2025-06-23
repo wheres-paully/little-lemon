@@ -1,57 +1,38 @@
 // Main.js
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { fetchData, submitAPI } from './api'; // assuming these are globally available
 import BookingForm from './BookingForm';
 
-function initializeTimes() {
-  return [
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00'
-  ];
+// Moved here so it's not duplicated
+export function initializeTimes() {
+  const today = new Date();
+  return fetchData(today); // fetches available times for today's date
 }
 
-function updateTimes(state, action) {
-  const selectedDate = action;
-  // You can add logic here to return different times based on the selectedDate
-  return initializeTimes(); // for now, it's static
+export function updateTimes(state, selectedDate) {
+  return fetchData(new Date(selectedDate)); // update times based on selected date
 }
 
 function Main() {
+  const navigate = useNavigate();
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+
+  const submitForm = (formData) => {
+    if (submitAPI(formData)) {
+      navigate('/confirmation');
+    }
+  };
 
   return (
     <main>
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+      <BookingForm
+        availableTimes={availableTimes}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
     </main>
   );
 }
 
 export default Main;
-
-export function initializeTimes() {
-  return [
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00'
-  ];
-}
-
-export function updateTimes(state, date) {
-  return initializeTimes(); // currently returns same list regardless of date
-}
