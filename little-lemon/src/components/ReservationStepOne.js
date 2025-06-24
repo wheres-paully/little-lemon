@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const UKPhoneRegex = /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$/;
+const USPhoneRegex = /^(\+1\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/;
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('First name is required'),
   surname: Yup.string().required('Surname is required'),
   email: Yup.string().email('Invalid email').required('Email is required'),
   cellNumber: Yup.string()
-    .matches(UKPhoneRegex, 'Enter a valid UK phone number')
+    .matches(USPhoneRegex, 'Enter a valid UK phone number')
     .required('Cell number is required'),
   guests: Yup.number()
     .min(1, 'At least 1 guest')

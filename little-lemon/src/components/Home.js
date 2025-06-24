@@ -1,4 +1,4 @@
-// Main.js
+// Home.js
 import { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchData, submitAPI } from './api'; // assuming these are globally available
@@ -35,4 +35,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Home;

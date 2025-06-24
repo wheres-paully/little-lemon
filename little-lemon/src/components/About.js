@@ -1,10 +1,13 @@
 import React from 'react';
 import './About.css';
-import lemonImage from './assets/lemon-chef.jpg'; // Replace with your image path
+import lemonImage from './assets/ChefSprinkles.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function About() {
+  const navigate = useNavigate();
+
   return (
-    <div className="little-lemon-container">
+    <div className="little-lemon-container" style={{ backgroundImage: `url(${lemonImage})` }}>
       <div className="text-section">
         <h1>Little Lemon</h1>
         <h2>Chicago</h2>
@@ -14,10 +17,12 @@ function About() {
           the menu features dishes inspired by Greek, Italian, and Middle Eastern traditions,
           including handmade pasta, grilled seafood, and flavorful mezze platters.
         </p>
-        <button className="reserve-button">Reserve a Table</button>
-      </div>
-      <div className="image-section">
-        <img src={lemonImage} alt="Little Lemon cuisine" />
+        <button
+          className="reserve-button"
+          onClick={() => navigate("/reservation-step-one")}
+        >
+          Reserve a Table
+        </button>
       </div>
     </div>
   );
