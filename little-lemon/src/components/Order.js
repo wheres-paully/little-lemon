@@ -1,9 +1,10 @@
+// Order.js
 import React from "react";
 
 function Order() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.text}>Under Construction. Coming Soon...</h1>
+      <h1 style={styles.text}>Online Orders are Under Construction. Please come back soon...</h1>
     </div>
   );
 }

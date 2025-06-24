@@ -1,3 +1,4 @@
+// About.js
 import React from 'react';
 import './About.css';
 import lemonImage from './assets/ChefSprinkles.jpg';

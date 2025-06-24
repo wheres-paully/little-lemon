@@ -3,7 +3,7 @@ import React from "react";
 function Login() {
   return (
     <div style={styles.container}>
-      <h1 style={styles.text}>Under Construction. Coming Soon...</h1>
+      <h1 style={styles.text}>Log In PortalUnder Construction. Please come back soon...</h1>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Main from "./components/Main";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
@@ -16,13 +17,14 @@ function App() {
     <Router>
       <Nav />
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />} />
         <Route path="/specials" element={<Specials />} />
         <Route path="/order" element={<Order />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<ReservationStepOne />} />
-        <Route path="/step-two" element={<ReservationStepTwo />} />
-        <Route path="/success" element={<ReservationSuccess />} />
+        <Route path="/reservationstepone" element={<ReservationStepOne />} />
+        <Route path="/reservationsteptwo" element={<ReservationStepTwo />} />
+        <Route path="/reservationsuccess" element={<ReservationSuccess />} />
       </Routes>
       <Footer />
     </Router>
