@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from "./components/Main";
-import Nav from "./components/Nav";
+import { BrowserRouter, Route, Routes } from "react-router";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
-
+import Home from "./components/Home";
 import About from "./components/About";
 import Specials from "./components/Specials";
+import Menu from "./components/Menu";
 import Order from "./components/Order";
 import Login from "./components/Login";
 import ReservationStepOne from './components/ReservationStepOne';
@@ -14,20 +14,23 @@ import ReservationSuccess from './components/ReservationSuccess';
 
 function App() {
   return (
-    <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
+    <div>
+    <BrowserRouter>
+    <NavBar />
+    <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/specials" element={<Specials />} />
+        <Route path="/menu" element={<Menu />} />
         <Route path="/order" element={<Order />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reservationstepone" element={<ReservationStepOne />} />
-        <Route path="/reservationsteptwo" element={<ReservationStepTwo />} />
-        <Route path="/reservationsuccess" element={<ReservationSuccess />} />
-      </Routes>
-      <Footer />
-    </Router>
+        <Route path="/step-two" element={<ReservationStepTwo />} />
+        <Route path="/success" element={<ReservationSuccess />} /> 
+        </Routes>
+        <Footer />
+        </BrowserRouter>
+    </div>
   );
 }
 

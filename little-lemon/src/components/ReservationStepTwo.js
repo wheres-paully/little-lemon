@@ -1,7 +1,9 @@
+// ReservationStepTwo.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import './ReservationStepTwo.css';
 
 const today = new Date();
 const maxDate = new Date(today);
@@ -12,20 +14,22 @@ function ReservationStepTwo() {
 
   return (
     <section>
-      <h2>Reservation Form (Page 2/2)</h2>
+      <h2>Reservation Form 
+        <br />
+         (Page 2 of 2)</h2>
       <Formik
         initialValues={{
           date: today.toISOString().split('T')[0],
           time: '',
-          occasion: '',
         }}
         validationSchema={Yup.object({
           date: Yup.date()
+            .transform((value, originalValue) => new Date(originalValue))
             .min(today, 'Date cannot be in the past')
             .max(maxDate, 'Only up to one month ahead')
             .required('Date is required'),
           time: Yup.string().required('Time is required'),
-          occasion: Yup.string().required('Occasion is required'),
+          
         })}
         onSubmit={(values) => {
           const stepOne = JSON.parse(localStorage.getItem('reservationStepOne'));
@@ -34,47 +38,32 @@ function ReservationStepTwo() {
           navigate('/success');
         }}
       >
-        <Form style={{ display: 'grid', gap: '1rem', maxWidth: '400px' }}>
-          <label>
-            Date:
-            <Field name="date" type="date" />
-            <ErrorMessage name="date" component="div" />
-          </label>
+       <Form className="reservation-form">
+  <label>
+    Date:
+    <Field name="date" type="date" className="form-input" />
+    <ErrorMessage name="date" component="div" className="error" />
+  </label>
 
-          <label>
-            Time:
-            <Field name="time" as="select">
-              <option value="">Select time</option>
-              {[...Array(11)].map((_, i) => {
-                const hour = 12 + i;
-                const label = `${hour}:00`;
-                return (
-                  <option key={label} value={label}>
-                    {label}
-                  </option>
-                );
-              })}
-            </Field>
-            <ErrorMessage name="time" component="div" />
-          </label>
+  <label>
+    Time:
+    <Field name="time" as="select" className="form-input">
+      <option value="">Select time</option>
+      {[...Array(11)].map((_, i) => {
+        const hour = 12 + i;
+        const label = `${hour}:00`;
+        return (
+                <option key={label} value={label}>
+                  {label}
+                </option>
+              );
+            })}
+          </Field>
+          <ErrorMessage name="time" component="div" className="error" />
+  </label>
 
-          <label>
-            Occasion:
-            <Field name="occasion" as="select">
-              <option value="">Select Occasion</option>
-              <option value="Anniversary">Anniversary</option>
-              <option value="Baby Shower">Baby Shower</option>
-              <option value="Birthday">Birthday</option>
-              <option value="Engagement">Engagement</option>
-              <option value="Graduation">Graduation</option>
-              <option value="Normal Dining">Normal Dining</option>
-              <option value="Retirement">Retirement</option>
-            </Field>
-            <ErrorMessage name="occasion" component="div" />
-          </label>
-
-          <button type="submit">Reserve</button>
-        </Form>
+        <button type="submit" className="form-button">Reserve</button>
+      </Form>
       </Formik>
     </section>
   );

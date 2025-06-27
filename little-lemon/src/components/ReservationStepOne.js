@@ -1,7 +1,9 @@
+// ReservationStepTwo.js
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import './ReservationStepOne.css';
 
 const USPhoneRegex = /^(\+1\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/;
 
@@ -12,6 +14,7 @@ const validationSchema = Yup.object({
   cellNumber: Yup.string()
     .matches(USPhoneRegex, 'Enter a valid UK phone number')
     .required('Cell number is required'),
+  occasion: Yup.string().required('Occasion is required'),
   guests: Yup.number()
     .min(1, 'At least 1 guest')
     .max(10, 'No more than 10 guests')
@@ -23,13 +26,16 @@ function ReservationStepOne() {
 
   return (
     <section>
-      <h2>Reservation Form (Page 1/2)</h2>
+      <h2>Reservation Form 
+        <br />
+        (Page 1 of 2)</h2>
       <Formik
         initialValues={{
           firstName: '',
           surname: '',
           email: '',
           cellNumber: '',
+          
           guests: '',
         }}
         validationSchema={validationSchema}
@@ -38,38 +44,53 @@ function ReservationStepOne() {
           navigate('/step-two');
         }}
       >
-        <Form style={{ display: 'grid', gap: '1rem', maxWidth: '400px' }}>
+        <Form className="reservation-form">
           <label>
             First Name:
-            <Field name="firstName" />
-            <ErrorMessage name="firstName" component="div" />
+            <Field name="firstName" className="form-input" />
+            <ErrorMessage name="firstName" component="div" className="error" />
           </label>
 
           <label>
             Surname:
-            <Field name="surname" />
-            <ErrorMessage name="surname" component="div" />
+            <Field name="surname" className="form-input" />
+            <ErrorMessage name="surname" component="div" className="error" />
           </label>
 
           <label>
             Email:
-            <Field name="email" type="email" />
-            <ErrorMessage name="email" component="div" />
+            <Field name="email" type="email" className="form-input" />
+            <ErrorMessage name="email" component="div" className="error" />
           </label>
 
           <label>
             Cell Number:
-            <Field name="cellNumber" />
-            <ErrorMessage name="cellNumber" component="div" />
+            <Field name="cellNumber" type="tel" className="form-input" />
+            <ErrorMessage name="cellNumber" component="div" className="error" />
           </label>
 
           <label>
-            Number of Guests:
-            <Field name="guests" type="number" />
-            <ErrorMessage name="guests" component="div" />
+            Occasion:
+            <Field name="occasion" as="select" className="form-input">
+              <option value="">Select Occasion</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Baby Shower">Baby Shower</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Engagement">Engagement</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Normal Dining">Normal Dining</option>
+              <option value="Retirement">Retirement</option>
+            </Field>
+            <ErrorMessage name="occasion" component="div" className="error"/>
           </label>
-
-          <button type="submit">Next</button>
+          
+          <label>
+            Number of Guests:
+            <Field name="guests" type="number" min="1" max="10" className="form-input" />
+            <ErrorMessage name="guests" component="div" className="error" />
+          </label>
+        
+          <button type="submit" className="form-button">Next</button>
         </Form>
       </Formik>
     </section>

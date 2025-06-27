@@ -1,6 +1,6 @@
 // Specials.js
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import "./Specials.css";
 
 import pilPilImage from "./assets/Gambas.jpg";

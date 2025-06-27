@@ -1,6 +1,6 @@
 // Footer.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Footer.css";
 import logo from "./assets/LLVertical.png";
 
@@ -8,21 +8,22 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer">
-      <div className="footer-logo">
-        <img src={logo} alt="Little Lemon Logo" />
+      <footer className="footer">
+        <div className="footer-columns">
+        <div className="footer-column horizontal-group centered-logo-group">
+        <div className="footer-logo inline-logo">
+      <img src={logo} alt="Little Lemon Logo" />
+        </div>
       </div>
-
-      <div className="footer-columns">
-        <div className="footer-column">
+      <div>
           <h4>Doormat Navigation</h4>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/menu">Menu</Link></li>
-            <li><Link to="/reservation">Reservation</Link></li>
-            <li><Link to="/order">Order Online</Link></li>
-            <li><Link to="/login">Log In</Link></li>
+            <li><NavLink to="/">Home</NavLink ></li>
+            <li><NavLink to="/about">About</NavLink></li>
+            <li><NavLink to="/menu">Menu</NavLink></li>
+            <li><NavLink to="/reservation">Reservation</NavLink></li>
+            <li><NavLink to="/order">Order Online</NavLink></li>
+            <li><NavLink to="/login">Log In</NavLink></li>
           </ul>
         </div>
 
@@ -46,7 +47,6 @@ function Footer() {
           </ul>
         </div>
       </div>
-
       <div className="footer-rights">
         <small>© {currentYear} Little Lemon. All rights reserved.</small>
       </div>

@@ -1,11 +1,18 @@
 // ReservationSuccess.js
 import React from 'react';
+import { useNavigate } from 'react-router';
+import './ReservationSuccess.css'; 
 
 function ReservationSuccess() {
+  const navigate = useNavigate();
+
+  const reservationData = JSON.parse(localStorage.getItem('finalReservationData'));
+  const fullName = reservationData ? `${reservationData.firstName} ${reservationData.surname}` : 'Guest';
+
   return (
-    <section style={{ padding: '2rem', border: '1px solid #ccc', maxWidth: '500px', margin: 'auto' }}>
-      <h2>Your table has been reserved!</h2>
-      <p>Check your email for the confirmation... :)</p>
+    <section className="reservation-form">
+      <h2>{fullName}, your table has been reserved!</h2>
+      <p className="confirmation-text">Check your email for the confirmation... 😊</p>
     </section>
   );
 }
