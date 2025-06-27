@@ -6,7 +6,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Specials from "./components/Specials";
 import Menu from "./components/Menu";
-import Order from "./components/Order";
+import OnlineOrdering from "./components/OnlineOrdering";
 import Login from "./components/Login";
 import ReservationStepOne from './components/ReservationStepOne';
 import ReservationStepTwo from './components/ReservationStepTwo';
@@ -22,11 +22,11 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/specials" element={<Specials />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/order" element={<Order />} />
+        <Route path="/onlineordering" element={<OnlineOrdering />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reservationstepone" element={<ReservationStepOne />} />
         <Route path="/step-two" element={<ReservationStepTwo />} />
-        <Route path="/success" element={<ReservationSuccess />} /> 
+        <Route path="/success" element={<ReservationSuccess />} />  
         </Routes>
         <Footer />
         </BrowserRouter>

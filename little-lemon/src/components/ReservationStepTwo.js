@@ -47,7 +47,7 @@ function ReservationStepTwo() {
 
   <label>
     Time:
-    <Field name="time" as="select" className="form-input">
+    <Field name="time" as="select" className="custom-select">
       <option value="">Select time</option>
       {[...Array(11)].map((_, i) => {
         const hour = 12 + i;

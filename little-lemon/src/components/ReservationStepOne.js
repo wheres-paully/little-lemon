@@ -71,7 +71,7 @@ function ReservationStepOne() {
 
           <label>
             Occasion:
-            <Field name="occasion" as="select" className="form-input">
+            <Field name="occasion" as="select" className="custom-select">
               <option value="">Select Occasion</option>
               <option value="Anniversary">Anniversary</option>
               <option value="Baby Shower">Baby Shower</option>

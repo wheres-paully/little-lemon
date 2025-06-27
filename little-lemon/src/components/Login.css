@@ -4,6 +4,9 @@
     gap: 0.25rem;
   }
   
+  .submit-button {
+    background-color: #495E57;
+  }
   .forgot-password {
     text-align: right;
     margin-top: -0.5rem;
@@ -12,7 +15,7 @@
   
   .forgot-password a {
     font-size: 0.95rem;
-    color: #495E57;
+    color: #ffffff;
     text-decoration: none;
     font-family: 'Markazi Text', serif;
   }
@@ -22,6 +25,10 @@
     color: #f4ce14;
   }
  
+  .reservation-form h2 {
+    color: #ffffff;
+  }
+  
   @media (max-width: 600px) {
     .reservation-form {
       padding: 1.25rem;
@@ -42,6 +49,7 @@
     h2 {
       font-size: 1.75rem;
       text-align: center;
+      font-family: 'Markazi Text', serif;
     }
   
     .forgot-password a {
